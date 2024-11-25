@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintage Design with Video Background</title>
+    <link rel="stylesheet" href="Style.css">
+
+</head>
+<body>
+
+    <div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+     </div>
+
+    <div class="navbar vintage">
+        <a href="Index.Html">Home</a>
+        <a href="Spons.Html">Sponsored</a>
+    </div>
+
+    <div class="content vintage">
+        <h1>Welcome to Our Vintage Photo</h1>
+        <p>Explore the Vintage photo from the 1980's</p>
+    </div>
+
+    <div class="carousel-container vintage">
+        <div class="carousel-slides">
+
+            <div class="carousel-slide">
+                <img src="Images/images (1).jpg" alt="Slide 1">
+            </div>
+
+            <div class="carousel-slide">
+                <img src="Images/saddasdasddsa.webp" alt="Slide 2">
+            </div>
+
+            <div class="carousel-slide">
+                <img src="Images/17-vintage.preview.jpg" alt="Slide 3">
+            </div>
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            if (index >= totalSlides) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = index;
+            }
+            const slideWidth = slides[0].offsetWidth;
+            document.querySelector('.carousel-slides').style.transform = `translateX(-${slideWidth * currentSlide}px)`;
+        }
+
+        function moveSlide(step) {
+            showSlide(currentSlide + step);
+        }
+
+        setInterval(() => {
+            moveSlide(1);
+        }, 3000);
+    </script>
+
+</body>
+</html>
